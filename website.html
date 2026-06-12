@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InfoCare — E-Governance & Digital Infrastructure</title>
+  <meta name="description" content="Nepal's premier e-governance technology company. Building scalable digital infrastructure for government, municipalities, and enterprises." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Premium Google Fonts: Inter & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            navy: '#2D465E',      // Deep Slate Navy
+            sky: '#24A9DF',       // Electric Cyan
+            navyDeep: '#1B2D3E',  // Premium Dark Accent
+            navyMid: '#3D5A74',   // Mid tone
+            skyLight: '#E8F6FD',  // Light tint
+            mist: '#F4F8FB',      // Neutral off-white
+            ink: '#1A2733',       // Text rich dark
+            smoke: '#6B8A9F',     // Text muted
+            border: '#D2E3EE',    // Delicate borders
+          },
+          boxShadow: {
+            premium: '0 4px 30px rgba(45, 70, 94, 0.04)',
+            hoverGlow: '0 10px 40px rgba(36, 169, 223, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium visual helpers */
+    .glow-bg {
+      background: radial-gradient(circle, rgba(36, 169, 223, 0.08) 0%, transparent 70%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    
+    /* Reveal transitions */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Infinite Ticker Animation */
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-ticker {
+      display: flex;
+      width: max-content;
+      animation: ticker 35s linear infinite;
+    }
+    .animate-ticker:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+  <!-- =============================================
+       TOP-LEVEL NAVIGATION (STICKY & RESPONSIVE)
+       ============================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm" id="main-header">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <a href="#home" class="flex items-center space-x-3 group">
+        <div class="w-9 h-9 rounded-xl bg-sky flex items-center justify-center text-white shadow-md shadow-sky/20 transition-transform group-hover:scale-105">
+          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2L3 6v8l7 4 7-4V6L10 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M10 2v12M3 6l7 4 7-4" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-xl tracking-tight text-navy">Info<span class="text-sky">Care</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden lg:flex items-center space-x-1" aria-label="Main Directory">
+        <a href="#home" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-home">Home</a>
+        <a href="#services" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-services">Services</a>
+        <a href="#products" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-products">Products</a>
+        <a href="#about" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-about">About Us</a>
+        <a href="#case-studies" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-case-studies">Case Studies</a>
+        <a href="#resources" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-resources">Resources</a>
+        <a href="#contact" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold text-navy hover:text-sky hover:bg-skyLight transition-all" id="nav-contact">Contact</a>
+      </nav>
+
+      <!-- Desktop Call to Action -->
+      <div class="hidden lg:block">
+        <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-navy text-white text-xs font-bold hover:bg-navyDeep transition-all shadow-sm">
+          <i class="fa-solid fa-laptop-code mr-2"></i> Request Demo Portal
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="lg:hidden p-2 text-navy" id="mobile-menu-trigger" aria-label="Toggle Mobile Menu">
+        <i class="fa-solid fa-bars-staggered text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Slide-Down Overlay -->
+    <div class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 space-y-3 shadow-lg" id="mobile-dropdown-menu">
+      <a href="#home" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">Home Base</a>
+      <a href="#services" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">Services & Capabilities</a>
+      <a href="#products" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">Our Product Suite</a>
+      <a href="#about" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">About Our Mission</a>
+      <a href="#case-studies" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">Case Studies</a>
+      <a href="#resources" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">Compliance & Tools</a>
+      <a href="#contact" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-navy hover:bg-skyLight">Contact Desk</a>
+      <div class="pt-4 border-t border-slate-100">
+        <a href="#contact" class="w-full text-center inline-flex items-center justify-center px-5 py-3 rounded-xl bg-sky text-white text-sm font-bold hover:bg-sky/90 transition-all">
+          <i class="fa-solid fa-envelope mr-2"></i> Reach Out
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- GLOBAL BACKGROUND CANVAS INTEGRATION -->
+  <div class="fixed inset-0 pointer-events-none z-0 opacity-45">
+    <canvas id="flow-particle-canvas" class="w-full h-full block"></canvas>
+  </div>
+
+  <!-- =============================================
+       PAGE CONTENTS (STACKED FOR SCROLLING VISIBILITY)
+       ============================================= -->
+  <main class="flex-grow z-10 pt-16">
+
+    <!-- ==========================================
+         SECTION: HERO & INTRO
+         ========================================== -->
+    <section id="home" class="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-mist to-white">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-skyLight rounded-full px-4 py-1.5 border border-sky/20">
+              <span class="w-2.5 h-2.5 rounded-full bg-sky animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-widest text-sky">E-Governance Technology Pioneer</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-navy leading-[1.1] tracking-tight">
+              Digital Infrastructure Built for <span class="text-sky underline decoration-sky/20">Modern</span> Governance
+            </h1>
+            
+            <p class="text-base md:text-lg text-smoke max-w-2xl leading-relaxed">
+              We design, build, and deploy robust, sovereign digital architectures that empower municipalities, provincial ministries, and departments across Nepal with absolute security, transparency, and compliance.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+              <a href="#products" class="inline-flex items-center justify-center px-6 py-4 rounded-xl bg-sky text-white font-bold text-sm shadow-lg shadow-sky/20 hover:bg-sky/90 transition-all text-center">
+                Explore E-Gov Products <i class="fa-solid fa-arrow-right ml-2"></i>
+              </a>
+              <a href="#resources" class="inline-flex items-center justify-center px-6 py-4 rounded-xl bg-white border border-slate-200 text-navy font-bold text-sm hover:bg-mist transition-all text-center">
+                Try Free PPA Calculator <i class="fa-solid fa-calculator ml-2 text-sky"></i>
+              </a>
+            </div>
+
+            <!-- Quick Indicators -->
+            <div class="grid grid-cols-3 gap-6 pt-10 border-t border-slate-100">
+              <div>
+                <div class="text-3xl font-display font-bold text-navy">753+</div>
+                <p class="text-xs text-smoke font-medium">Local Bodies Supported</p>
+              </div>
+              <div>
+                <div class="text-3xl font-display font-bold text-navy">9+</div>
+                <p class="text-xs text-smoke font-medium">Core Software Products</p>
+              </div>
+              <div>
+                <div class="text-3xl font-display font-bold text-navy">100%</div>
+                <p class="text-xs text-smoke font-medium">Sovereign Compliance</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Mockup Widget -->
+          <div class="lg:col-span-5 relative" data-reveal>
+            <div class="absolute inset-0 bg-sky/5 rounded-3xl filter blur-3xl -z-10"></div>
+            <div class="bg-navyDeep text-white rounded-3xl p-6 shadow-2xl border border-slate-700/50">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <div class="flex items-center space-x-2">
+                  <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                </div>
+                <span class="text-xs bg-sky/15 text-sky font-bold px-3 py-1 rounded-full border border-sky/30">
+                  <i class="fa-solid fa-eye mr-1"></i> Live CMIS Stream
+                </span>
+              </div>
+              
+              <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-3">National Procurement Dashboard</p>
+              <div class="space-y-3">
+                <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-700/40">
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-slate-300">Bagmati Municipalities</span>
+                    <span class="text-sky">84% Digital Adoption</span>
+                  </div>
+                  <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                    <div class="bg-sky h-full rounded-full" style="width: 84%"></div>
+                  </div>
+                </div>
+                <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-700/40">
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-slate-300">Gandaki Planning</span>
+                    <span class="text-emerald-400">76% Target Completion</span>
+                  </div>
+                  <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                    <div class="bg-emerald-400 h-full rounded-full" style="width: 76%"></div>
+                  </div>
+                </div>
+                <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-700/40">
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-slate-300">Lumbini Beruju Resolution</span>
+                    <span class="text-yellow-400">59% Cleared</span>
+                  </div>
+                  <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                    <div class="bg-yellow-400 h-full rounded-full" style="width: 59%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <span>Last Sync: Just Now</span>
+                <span class="text-emerald-400"><i class="fa-solid fa-circle-nodes mr-1"></i> Secure Node Connection Active</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: TRUST TICKER STRIP
+         ========================================== -->
+    <section class="bg-white py-10 border-y border-slate-100 overflow-hidden relative">
+      <div class="max-w-7xl mx-auto px-6 text-center mb-6">
+        <p class="text-xs uppercase tracking-widest font-bold text-smoke">Trusted by Premier Government Departments & Municipalities</p>
+      </div>
+      <div class="flex overflow-hidden w-full relative">
+        <div class="animate-ticker">
+          <!-- Set 1 -->
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-road text-sky"></i><span class="font-display font-semibold text-navy">Department of Roads</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-building text-sky"></i><span class="font-display font-semibold text-navy">DUDBC</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-map-location-dot text-sky"></i><span class="font-display font-semibold text-navy">Municipal Authorities</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-graduation-cap text-sky"></i><span class="font-display font-semibold text-navy">Education Review Office</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-landmark text-sky"></i><span class="font-display font-semibold text-navy">Ministry of Urban Development</span></div>
+          <!-- Set 2 Duplicate -->
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-road text-sky"></i><span class="font-display font-semibold text-navy">Department of Roads</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-building text-sky"></i><span class="font-display font-semibold text-navy">DUDBC</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-map-location-dot text-sky"></i><span class="font-display font-semibold text-navy">Municipal Authorities</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-graduation-cap text-sky"></i><span class="font-display font-semibold text-navy">Education Review Office</span></div>
+          <div class="flex items-center space-x-2 px-10 border-r border-slate-200"><i class="fa-solid fa-landmark text-sky"></i><span class="font-display font-semibold text-navy">Ministry of Urban Development</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: INTERACTIVE NEPAL PROVINCIAL MAP
+         ========================================== -->
+    <section class="py-20 bg-mist/50 border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5 space-y-5">
+            <div class="inline-flex items-center space-x-2 bg-emerald-100 text-emerald-800 rounded-full px-3 py-1 text-xs font-bold">
+              <i class="fa-solid fa-circle-check"></i> Provincial Coverage Complete
+            </div>
+            <h2 class="text-3xl font-display font-extrabold text-navy">Interactive Provincial Deployment Matrix</h2>
+            <p class="text-smoke text-sm leading-relaxed">
+              InfoCare actively operates across all tiers of Nepal's federal state model. Click on any province listed below to query active municipal counts, localized systems, and regional deployment metrics.
+            </p>
+            
+            <!-- Map Selection Buttons -->
+            <div class="grid grid-cols-1 gap-2.5" id="province-controls">
+              <!-- Dynamically Hydrated -->
+            </div>
+          </div>
+
+          <!-- Interactive visual card reflecting live province state -->
+          <div class="lg:col-span-7" data-reveal>
+            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-premium relative overflow-hidden min-h-[400px] flex flex-col justify-between">
+              <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-sky/5 rounded-full filter blur-2xl"></div>
+              
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <span class="text-xs uppercase tracking-widest font-extrabold text-sky" id="p-card-header">PROVINCE REPORT</span>
+                  <span class="px-3 py-1 bg-skyLight text-sky text-xs font-bold rounded-lg border border-sky/20" id="p-card-deployed">Active Status</span>
+                </div>
+                
+                <h3 class="text-2xl font-display font-extrabold text-navy mb-3" id="p-card-title">Select a Province</h3>
+                <p class="text-smoke text-sm leading-relaxed mb-6" id="p-card-desc">Click on any province on the left controls list to load corresponding localized metrics and operational database counts.</p>
+              </div>
+
+              <div class="border-t border-slate-100 pt-6 grid grid-cols-2 gap-4">
+                <div>
+                  <span class="text-[10px] text-smoke font-bold uppercase tracking-wider block">Deployed Local Bodies</span>
+                  <span class="text-2xl font-display font-extrabold text-navy" id="p-card-count">0</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-smoke font-bold uppercase tracking-wider block">Local Core Framework</span>
+                  <span class="text-2xl font-display font-extrabold text-sky" id="p-card-framework">N/A</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: SERVICES & CAPABILITIES
+         ========================================== -->
+    <section id="services" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+          <div>
+            <p class="t-eyebrow text-xs uppercase tracking-widest font-extrabold text-sky">What We Do</p>
+            <h2 class="text-4xl font-display font-extrabold text-navy mt-2">End-to-End Digital Governance Solutions</h2>
+            <p class="text-smoke text-base mt-4 max-w-xl">From citizen portals to audit management systems, we design and engineer software that scales with your institution.</p>
+          </div>
+          <a href="#products" class="px-5 py-2.5 bg-white border border-slate-200 hover:border-sky hover:text-sky text-navy text-xs font-bold rounded-xl transition-all h-fit shrink-0">
+            View All Products
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Featured Card -->
+          <div class="col-span-1 md:col-span-2 bg-navyDeep text-white rounded-3xl p-8 flex flex-col lg:flex-row justify-between items-center gap-8 border border-slate-800" data-reveal>
+            <div class="space-y-6 lg:max-w-md">
+              <div class="w-12 h-12 rounded-2xl bg-sky/20 text-sky flex items-center justify-center text-xl">
+                <i class="fa-solid fa-laptop-file"></i>
+              </div>
+              <h3 class="text-2xl font-display font-bold">E-Governance & Digital Transformation</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">We digitize government operations end-to-end — from citizen-facing portals to internal workflow automation — reducing manual overhead and improving service delivery timelines.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] bg-white/10 text-slate-300 px-3 py-1 rounded-full">Citizen Portals</span>
+                <span class="text-[10px] bg-white/10 text-slate-300 px-3 py-1 rounded-full">GIS Integration</span>
+                <span class="text-[10px] bg-white/10 text-slate-300 px-3 py-1 rounded-full">MIS Dashboards</span>
+              </div>
+            </div>
+            <div class="w-full lg:w-fit bg-white/5 border border-white/10 p-6 rounded-2xl space-y-3 min-w-[280px]">
+              <div class="flex items-center justify-between text-xs text-slate-300"><span class="flex items-center gap-2"><i class="fa-solid fa-shield text-sky"></i> Role-based Control</span><span class="text-emerald-400 font-bold">Active</span></div>
+              <div class="flex items-center justify-between text-xs text-slate-300"><span class="flex items-center gap-2"><i class="fa-solid fa-chart-line text-sky"></i> Real-time reporting</span><span class="text-emerald-400 font-bold">Live</span></div>
+              <div class="flex items-center justify-between text-xs text-slate-300"><span class="flex items-center gap-2"><i class="fa-solid fa-map-location text-sky"></i> GIS Visualization</span><span class="text-emerald-400 font-bold">Active</span></div>
+            </div>
+          </div>
+
+          <!-- Service Block 2 -->
+          <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-premium hover:shadow-hoverGlow transition-all" data-reveal>
+            <div class="w-12 h-12 rounded-2xl bg-skyLight text-sky flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-file-contract"></i></div>
+            <h3 class="text-xl font-display font-bold text-navy mb-3">Procurement & Contract Systems</h3>
+            <p class="text-xs text-smoke leading-relaxed mb-6">Audit-ready procurement management with bid coordination, vendor registries, and automated compliance reporting for public sector cycles.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">PMS</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">CMIS</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">e-Tendering</span>
+            </div>
+          </div>
+
+          <!-- Service Block 3 -->
+          <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-premium hover:shadow-hoverGlow transition-all" data-reveal>
+            <div class="w-12 h-12 rounded-2xl bg-skyLight text-sky flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-earth-asia"></i></div>
+            <h3 class="text-xl font-display font-bold text-navy mb-3">GIS & Data Visualization</h3>
+            <p class="text-xs text-smoke leading-relaxed mb-6">Transform institutional data into interactive geographic and statistical intelligence — from provincial dashboards to granular field insights.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">OpenStreetMap</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">GIS Layers</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">Analytics</span>
+            </div>
+          </div>
+
+          <!-- Service Block 4 -->
+          <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-premium hover:shadow-hoverGlow transition-all" data-reveal>
+            <div class="w-12 h-12 rounded-2xl bg-skyLight text-sky flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3 class="text-xl font-display font-bold text-navy mb-3">Mobile Applications</h3>
+            <p class="text-xs text-smoke leading-relaxed mb-6">Field-ready mobile apps for progress reporting, farmer management, school audits, and citizen services — optimized for low-connectivity environments.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">Android</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">Offline-first</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">Field Ops</span>
+            </div>
+          </div>
+
+          <!-- Service Block 5 -->
+          <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-premium hover:shadow-hoverGlow transition-all" data-reveal>
+            <div class="w-12 h-12 rounded-2xl bg-skyLight text-sky flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-brain"></i></div>
+            <h3 class="text-xl font-display font-bold text-navy mb-3">AI-Powered Support</h3>
+            <p class="text-xs text-smoke leading-relaxed mb-6">Multilingual AI chatbots that provide 24/7 operational guidance in English, Nepali, and Romanized Nepali — with seamless human escalation pathways.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">NLP Engine</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">Devanagari</span>
+              <span class="text-[9px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">Hybrid Escalation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: PRODUCTS TAB SHOWCASE
+         ========================================== -->
+    <section id="products" class="py-20 bg-mist">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="text-xs uppercase tracking-widest font-extrabold text-sky">Our Product Suite</span>
+          <h2 class="text-3xl font-display font-extrabold text-navy">Nine Core Solutions. One Dynamic Vision.</h2>
+          <p class="text-smoke text-sm">Purpose-built e-governance software platforms designed explicitly to solve real institutional constraints. Click a product to review features.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-premium min-h-[580px]">
+          <!-- Left Selector Nav -->
+          <nav class="lg:col-span-4 bg-slate-50 border-r border-slate-200/60 p-4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible space-x-2 lg:space-x-0 lg:space-y-1.5 shrink-0" aria-label="Product selector">
+            <!-- JavaScript will inject and coordinate live states here -->
+          </nav>
+
+          <!-- Right Detail View -->
+          <div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-between" id="product-detail-panel">
+            <!-- Injected via state engine -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: ABOUT MISSION & TIMELINE
+         ========================================== -->
+    <section id="about" class="py-20 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+          <div class="lg:col-span-7 space-y-6">
+            <span class="text-xs uppercase tracking-widest font-extrabold text-sky">A Decade in Engineering</span>
+            <h1 class="text-4xl font-display font-extrabold text-navy">Building the Sovereign Digital Matrix of Nepal</h1>
+            <p class="text-smoke text-base leading-relaxed">
+              InfoCare is Nepal's leading e-governance technology provider, serving local levels, provinces, and central ministries with state-of-the-art secure software deployments.
+            </p>
+            <p class="text-smoke text-sm leading-relaxed">
+              Our teams combine deep technical knowledge in distributed microservices architectures with local operational realities. From offline-capable mobile field monitoring to high-security financial audit ledger structures, our software is engineered for peak resilience.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/50">
+                <span class="text-sky text-lg"><i class="fa-solid fa-flag"></i></span>
+                <h4 class="font-display font-bold text-navy mt-1.5">National Vision</h4>
+                <p class="text-xs text-smoke mt-1 leading-relaxed">To implement seamless, fully audit-compliant administrative portals for all 753 Municipalities.</p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/50">
+                <span class="text-sky text-lg"><i class="fa-solid fa-shield-halved"></i></span>
+                <h4 class="font-display font-bold text-navy mt-1.5">Sovereign Governance</h4>
+                <p class="text-xs text-smoke mt-1 leading-relaxed">Ensuring 100% locally controlled national servers, keeping critical data secured in compliance with local regulations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Tracker Panel -->
+          <div class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-3xl p-6 shadow-premium relative" data-reveal>
+            <div class="absolute top-0 right-0 w-24 h-24 bg-sky/5 rounded-bl-3xl -z-10"></div>
+            <h3 class="font-display font-bold text-lg text-navy mb-6">Our Journey & Development</h3>
+            
+            <div class="space-y-6 relative before:absolute before:left-[15px] before:top-2 before:bottom-2 before:w-[1.5px] before:bg-slate-200">
+              <div class="flex items-start space-x-4 relative">
+                <div class="w-8 h-8 rounded-full bg-skyLight text-sky flex items-center justify-center font-bold text-xs shrink-0 z-10 border border-sky/30">14</div>
+                <div>
+                  <h4 class="font-display font-bold text-navy text-sm">Founded in Kathmandu</h4>
+                  <p class="text-xs text-smoke mt-1 leading-relaxed">Launched with the core objective of developing secure software paradigms for the state administration of Nepal.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4 relative">
+                <div class="w-8 h-8 rounded-full bg-skyLight text-sky flex items-center justify-center font-bold text-xs shrink-0 z-10 border border-sky/30">17</div>
+                <div>
+                  <h4 class="font-display font-bold text-navy text-sm">First CMIS Deployment</h4>
+                  <p class="text-xs text-smoke mt-1 leading-relaxed">Deployed our Contract Management platform across major municipal offices, replacing manual registers with secure databases.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4 relative">
+                <div class="w-8 h-8 rounded-full bg-skyLight text-sky flex items-center justify-center font-bold text-xs shrink-0 z-10 border border-sky/30">20</div>
+                <div>
+                  <h4 class="font-display font-bold text-navy text-sm">Artificial Intelligence Operations</h4>
+                  <p class="text-xs text-smoke mt-1 leading-relaxed">Pioneered localized Nepali Natural Language Processing (NLP) to launch 24/7 municipal AI Helpdesks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team section -->
+        <div class="border-t border-slate-100 pt-16">
+          <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <h2 class="text-3xl font-display font-extrabold text-navy">Our Leadership & Architects</h2>
+            <p class="text-smoke text-sm">The specialized engineers and policy specialists driving digital transformation.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-premium hover:shadow-md transition-shadow text-center" data-reveal>
+              <div class="w-20 h-20 bg-skyLight rounded-full flex items-center justify-center mx-auto text-sky text-2xl font-bold mb-4">RD</div>
+              <h3 class="font-display font-bold text-navy text-lg">Rajan Dahal</h3>
+              <p class="text-xs text-sky font-semibold uppercase tracking-wider mb-2">Chief Executive Officer</p>
+              <p class="text-xs text-smoke leading-relaxed">A decade of public technology transformation experience. Driving state modernization.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-premium hover:shadow-md transition-shadow text-center" data-reveal data-reveal-delay="1">
+              <div class="w-20 h-20 bg-skyLight rounded-full flex items-center justify-center mx-auto text-sky text-2xl font-bold mb-4">AP</div>
+              <h3 class="font-display font-bold text-navy text-lg">Aashish Pokharel</h3>
+              <p class="text-xs text-sky font-semibold uppercase tracking-wider mb-2">Senior Full-Stack Developer</p>
+              <p class="text-xs text-smoke leading-relaxed">Specializing in modern web technologies and scalable application architecture.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-premium hover:shadow-md transition-shadow text-center" data-reveal data-reveal-delay="2">
+              <div class="w-20 h-20 bg-skyLight rounded-full flex items-center justify-center mx-auto text-sky text-2xl font-bold mb-4">NN</div>
+              <h3 class="font-display font-bold text-navy text-lg">Nirmal Nyure</h3>
+              <p class="text-xs text-sky font-semibold uppercase tracking-wider mb-2">Senior Mobile App Developer</p>
+              <p class="text-xs text-smoke leading-relaxed">Developing innovative mobile applications for government services.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: CASE STUDIES & PORTFOLIOS
+         ========================================== -->
+    <section id="case-studies" class="py-20 bg-mist/30 border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div class="max-w-xl space-y-2">
+            <span class="text-xs uppercase tracking-widest font-extrabold text-sky">PROVEN DEPLOYMENTS</span>
+            <h1 class="text-4xl font-display font-extrabold text-navy">E-Gov Impact Studies</h1>
+            <p class="text-smoke text-sm">Discover how our specialized digital systems resolve actual operational constraints across local administrations.</p>
+          </div>
+          
+          <!-- Category Filters -->
+          <div class="flex items-center space-x-2 overflow-x-auto pb-2 shrink-0" id="case-filters">
+            <!-- Dynamic Category Buttons -->
+          </div>
+        </div>
+
+        <!-- Filtered Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cases-catalog-grid">
+          <!-- Injected dynamically via Javascript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: TESTIMONIALS
+         ========================================== -->
+    <section id="testimonials" class="py-20 bg-navyDeep text-white overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="text-xs uppercase tracking-widest font-extrabold text-sky">What Our Partners Say</span>
+          <h2 class="text-3xl font-display font-extrabold">Built on Trust. Measured by Outcomes.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6" data-reveal>
+            <div class="text-yellow-400 text-sm">★★★★★</div>
+            <p class="text-slate-300 text-xs leading-relaxed">"The CMIS platform transformed how we manage infrastructure projects. We now have real-time visibility over every contract milestone across all local authorities in our province — something that was simply impossible before."</p>
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-sky/20 text-sky flex items-center justify-center font-bold text-xs">RB</div>
+              <div>
+                <h4 class="font-display font-bold text-sm">Ram Bahadur Shrestha</h4>
+                <p class="text-[10px] text-slate-400">Director, Provincial Infrastructure</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6" data-reveal data-reveal-delay="1">
+            <div class="text-yellow-400 text-sm">★★★★★</div>
+            <p class="text-slate-300 text-xs leading-relaxed">"Deploying the Krishi Portal has genuinely changed how our municipality supports farmers. The farmer card system alone saved weeks of manual registration work, and farmers love the mobile app for subsidy updates."</p>
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-sky/20 text-sky flex items-center justify-center font-bold text-xs">SM</div>
+              <div>
+                <h4 class="font-display font-bold text-sm">Sita Maya Gurung</h4>
+                <p class="text-[10px] text-slate-400">Agriculture Officer, Pokhara Metro</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6" data-reveal data-reveal-delay="2">
+            <div class="text-yellow-400 text-sm">★★★★★</div>
+            <p class="text-slate-300 text-xs leading-relaxed">"The AOMS system completely eliminated our backlog of audit observations. Automatic Schedule 13 and 14 generation used to take a team three weeks. Now it's one click, and it's audit-ready."</p>
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-sky/20 text-sky flex items-center justify-center font-bold text-xs">PK</div>
+              <div>
+                <h4 class="font-display font-bold text-sm">Prakash Kumar Adhikari</h4>
+                <p class="text-[10px] text-slate-400">Internal Audit Chief, Department of Roads</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: HOW WE WORK (PROCESS)
+         ========================================== -->
+    <section class="py-20 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="text-xs uppercase tracking-widest font-extrabold text-sky">How We Work</span>
+          <h2 class="text-3xl font-display font-extrabold text-navy">From Brief to Deployment</h2>
+          <p class="text-smoke text-sm">Our process is built for government realities — thorough requirements gathering, compliant development, and institution-wide training.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div class="text-center space-y-4">
+            <div class="w-14 h-14 bg-skyLight text-sky rounded-full flex items-center justify-center mx-auto text-lg font-bold border border-sky/20">01</div>
+            <h4 class="font-display font-bold text-navy text-sm">Discovery</h4>
+            <p class="text-xs text-smoke leading-relaxed">Deep-dive into your institution's workflows and regulatory needs.</p>
+          </div>
+          <div class="text-center space-y-4">
+            <div class="w-14 h-14 bg-skyLight text-sky rounded-full flex items-center justify-center mx-auto text-lg font-bold border border-sky/20">02</div>
+            <h4 class="font-display font-bold text-navy text-sm">Architecture</h4>
+            <p class="text-xs text-smoke leading-relaxed">Design systems with robust role-based safety built-in.</p>
+          </div>
+          <div class="text-center space-y-4">
+            <div class="w-14 h-14 bg-skyLight text-sky rounded-full flex items-center justify-center mx-auto text-lg font-bold border border-sky/20">03</div>
+            <h4 class="font-display font-bold text-navy text-sm">Development</h4>
+            <p class="text-xs text-smoke leading-relaxed">Agile creation with iterative feedback and sandbox checks.</p>
+          </div>
+          <div class="text-center space-y-4">
+            <div class="w-14 h-14 bg-skyLight text-sky rounded-full flex items-center justify-center mx-auto text-lg font-bold border border-sky/20">04</div>
+            <h4 class="font-display font-bold text-navy text-sm">UAT & Launch</h4>
+            <p class="text-xs text-smoke leading-relaxed">Rigorous acceptance testing with internal teams before deployment.</p>
+          </div>
+          <div class="text-center space-y-4">
+            <div class="w-14 h-14 bg-skyLight text-sky rounded-full flex items-center justify-center mx-auto text-lg font-bold border border-sky/20">05</div>
+            <h4 class="font-display font-bold text-navy text-sm">Support</h4>
+            <p class="text-xs text-smoke leading-relaxed">On-site training, operational manuals, and 24/7 helpdesks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: RESOURCES & COMPLIANCE CALCULATOR
+         ========================================== -->
+    <section id="resources" class="py-20 bg-mist/50 border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="text-xs uppercase tracking-widest font-extrabold text-sky">Knowledge Transfer Desk</span>
+          <h1 class="text-4xl font-display font-extrabold text-navy">InfoCare Insights & Public Tools</h1>
+          <p class="text-smoke text-base">Educational resources, state manuals, and compliance documentation for municipal administrators.</p>
+        </div>
+
+        <!-- Dynamic Blog Resource Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" id="blogs-container-grid">
+          <!-- Dynamically Hydrated -->
+        </div>
+
+        <!-- Dynamic Free Calculator Banner Card -->
+        <div class="bg-gradient-to-tr from-navyDeep to-navy rounded-3xl text-white p-8 md:p-12 shadow-2xl relative overflow-hidden" data-reveal>
+          <div class="absolute inset-0 bg-[radial-gradient(#24A9DF_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div class="lg:col-span-5 space-y-4">
+              <span class="px-3 py-1 bg-sky/25 text-sky text-xs font-bold rounded-lg border border-sky/30">FREE PUBLIC TOOL</span>
+              <h2 class="text-3xl font-display font-extrabold leading-tight">PPA Bidding Compliance Calculator</h2>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Generate safe compliance milestones according to the rules of Nepal's Public Procurement Act (PPA). Select a project type and insert estimated budgets to output structural deadlines automatically.
+              </p>
+            </div>
+
+            <!-- Live Calculator Form Widget -->
+            <div class="lg:col-span-7 bg-white text-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Project Scope Classification</label>
+                  <select id="calc-scope" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-sky transition-colors">
+                    <option value="works">National Procurement (Works)</option>
+                    <option value="goods">Supply of Goods / Machinery</option>
+                    <option value="consult">Consultancy & Audit Services</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Estimated Budget (NPR)</label>
+                  <input type="number" id="calc-budget" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-sky transition-all" value="20000000" placeholder="e.g. 5000000">
+                </div>
+              </div>
+
+              <div class="bg-skyLight/50 p-4 rounded-xl border border-sky/10 space-y-3">
+                <p class="text-xs text-navy font-bold uppercase tracking-wide"><i class="fa-solid fa-list-check text-sky mr-1"></i> Predicted Compliance Milestones</p>
+                
+                <div class="grid grid-cols-3 gap-4 text-center">
+                  <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                    <span class="block text-[9px] text-smoke font-bold uppercase tracking-wider">Bid Open Period</span>
+                    <span class="text-sm font-display font-extrabold text-navy" id="calc-res-open">30 Days</span>
+                  </div>
+                  <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                    <span class="block text-[9px] text-smoke font-bold uppercase tracking-wider">Evaluation Period</span>
+                    <span class="text-sm font-display font-extrabold text-navy" id="calc-res-eval">15 Days</span>
+                  </div>
+                  <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                    <span class="block text-[9px] text-smoke font-bold uppercase tracking-wider">LOI Notice Frame</span>
+                    <span class="text-sm font-display font-extrabold text-navy" id="calc-res-loi">7 Days</span>
+                  </div>
+                </div>
+              </div>
+
+              <button id="calc-trigger" class="w-full bg-sky hover:bg-sky/95 text-white font-bold text-xs uppercase tracking-widest py-3 rounded-lg shadow-md shadow-sky/20 transition-all">
+                Recalculate Compliance Pipeline
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="border-t border-slate-200/60 mt-20 pt-16" id="faq">
+          <div class="max-w-3xl mx-auto space-y-4">
+            <h2 class="text-3xl font-display font-extrabold text-navy text-center mb-10">Frequently Answered Queries</h2>
+            
+            <div class="space-y-3" id="accordion-container">
+              <!-- Dynamically hydrated via Javascript -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION: CONTACT DESK & SUPPORT ROUTING
+         ========================================== -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-5 space-y-8">
+            <div>
+              <span class="text-xs uppercase tracking-widest font-extrabold text-sky">Liaison Office</span>
+              <h1 class="text-4xl font-display font-extrabold text-navy mt-1">Let's Establish a Modern System</h1>
+              <p class="text-smoke text-sm leading-relaxed mt-3">
+                If your administration, engineering division, or ministry requires a high-security, custom database audit or an e-governance roadmap session, connect with our principal engineering team below.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-start space-x-4">
+                <span class="w-10 h-10 rounded-xl bg-skyLight text-sky flex items-center justify-center shrink-0"><i class="fa-solid fa-map-location"></i></span>
+                <div>
+                  <h4 class="font-bold text-navy text-sm">Physical Headquarters</h4>
+                  <p class="text-xs text-smoke mt-0.5">Kathmandu, Bagmati Province, Nepal</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <span class="w-10 h-10 rounded-xl bg-skyLight text-sky flex items-center justify-center shrink-0"><i class="fa-solid fa-envelope"></i></span>
+                <div>
+                  <h4 class="font-bold text-navy text-sm">Secure Digital Mail</h4>
+                  <p class="text-xs text-smoke mt-0.5">info@InfoCare.com.np</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <span class="w-10 h-10 rounded-xl bg-skyLight text-sky flex items-center justify-center shrink-0"><i class="fa-solid fa-phone-volume"></i></span>
+                <div>
+                  <h4 class="font-bold text-navy text-sm">Primary Hotline</h4>
+                  <p class="text-xs text-smoke mt-0.5">+977 01-5970221</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operational Status Banner -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center space-x-3">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
+              <span class="text-xs font-semibold text-navy">Systems Active: Local data centers operating normally.</span>
+            </div>
+          </div>
+
+          <!-- Secure Booking Form Card -->
+          <div class="lg:col-span-7 bg-slate-50 border border-slate-200/80 rounded-3xl p-8 shadow-premium" data-reveal>
+            <h3 class="font-display font-bold text-xl text-navy mb-6">Initiate Structural Scope Review</h3>
+            
+            <form id="contact-gate-form" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Authority Official Name</label>
+                  <input type="text" required id="form-name-val" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs focus:outline-none focus:border-sky transition-colors" placeholder="Your name" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Government Body / Organization</label>
+                  <input type="text" required id="form-org-val" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs focus:outline-none focus:border-sky transition-colors" placeholder="Ministry/Municipality" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Direct Secure Mail Address</label>
+                <input type="email" required id="form-mail-val" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs focus:outline-none focus:border-sky transition-colors" placeholder="official@gov.np" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Desired Operational Focus</label>
+                <select id="form-scope-val" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs focus:outline-none focus:border-sky transition-colors">
+                  <option value="delivery">Service Delivery & Citizen Portals</option>
+                  <option value="cmis">CMIS Construction Infrastructure Lifecycle</option>
+                  <option value="pms">Public Procurement System Integration</option>
+                  <option value="aoms">Audit Discrepancy & Beruju Resolution</option>
+                  <option value="custom">Custom High-Performance Framework Development</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Deployment Objective Overview</label>
+                <textarea id="form-msg-val" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs focus:outline-none focus:border-sky transition-colors h-28" placeholder="Outline local bottlenecks or timeline constraints..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-sky hover:bg-sky/95 text-white font-extrabold text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg shadow-sky/20 transition-all flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Submit Secure Session Request</span>
+              </button>
+            </form>
+
+            <div id="form-success-alert" class="hidden text-center py-12 space-y-4">
+              <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-500 flex items-center justify-center mx-auto text-2xl"><i class="fa-solid fa-shield-check"></i></div>
+              <h4 class="font-display font-bold text-navy text-xl">Session Request Registered Safely</h4>
+              <p class="text-smoke text-xs max-w-md mx-auto">
+                Thank you. Your institutional scope query has bypassed regional gateways and reached our principal solutions architects. We will reply within 4 business hours.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FLOATING INTERACTIVE REAL-TIME CHATBOT
+       ============================================= -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Chat Launcher Circle -->
+    <button id="ai-chat-launcher" class="w-14 h-14 rounded-full bg-sky text-white shadow-xl flex items-center justify-center hover:scale-105 transition-transform" aria-label="Open Chat Helpdesk">
+      <i class="fa-solid fa-comments-dollar text-xl" id="chat-launcher-icon"></i>
+    </button>
+
+    <!-- Interactive Chat Window Dialog -->
+    <div id="ai-chat-box" class="hidden w-80 md:w-96 bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden mb-4 transition-all duration-300">
+      <!-- Window Header -->
+      <div class="bg-navy text-white p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-full bg-sky flex items-center justify-center text-white text-xs font-bold">GT</div>
+          <div>
+            <h4 class="font-bold text-xs">InfoCare AI Support</h4>
+            <span class="text-[9px] text-sky font-semibold uppercase tracking-wider block">English / Devanagari / Romanized</span>
+          </div>
+        </div>
+        <button id="ai-chat-close" class="text-slate-300 hover:text-white"><i class="fa-solid fa-times"></i></button>
+      </div>
+
+      <!-- Live Messages Sandbox Container -->
+      <div id="chat-stream-messages" class="flex-1 p-4 overflow-y-auto space-y-3 h-64 text-xs custom-scrollbar">
+        <!-- Default Welcome Message -->
+        <div class="flex items-start space-x-2">
+          <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-navy shrink-0 text-[10px] font-bold">AI</div>
+          <div class="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl text-slate-700 max-w-[80%] leading-relaxed">
+            Namaste! Welcome to InfoCare desk. Type your query about e-governance systems like <strong>Beruju (AOMS)</strong>, <strong>Yojana</strong>, <strong>CMIS</strong>, or <strong>Krishi</strong>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Option Chips -->
+      <div class="px-4 py-2 bg-slate-50/50 border-t border-slate-100 flex gap-1.5 overflow-x-auto select-none custom-scrollbar text-[10px]">
+        <button class="chat-chip px-2.5 py-1 bg-white border border-slate-200 rounded-full hover:bg-slate-50 font-semibold shrink-0">AOMS (Beruju)</button>
+        <button class="chat-chip px-2.5 py-1 bg-white border border-slate-200 rounded-full hover:bg-slate-50 font-semibold shrink-0">CMIS Details</button>
+        <button class="chat-chip px-2.5 py-1 bg-white border border-slate-200 rounded-full hover:bg-slate-50 font-semibold shrink-0">Krishi System</button>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="p-3 border-t border-slate-100 flex items-center space-x-2 bg-white">
+        <input type="text" id="chat-input-val" class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-sky" placeholder="Type query... (e.g. tell me about Beruju)" />
+        <button id="chat-send-trigger" class="w-8 h-8 rounded-lg bg-sky text-white flex items-center justify-center shadow-md shadow-sky/20 hover:bg-sky/95"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MASTER SYSTEM MODALS CONTAINER
+       ============================================= -->
+  <div id="master-system-modal" class="hidden fixed inset-0 z-50 bg-navyDeep/65 backdrop-blur-sm flex items-center justify-center p-6">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-8 border border-slate-200/80 shadow-2xl relative">
+      <button id="modal-close-trigger" class="absolute top-6 right-6 text-slate-400 hover:text-navy" aria-label="Close modal"><i class="fa-solid fa-circle-xmark text-2xl"></i></button>
+      
+      <div class="space-y-6" id="modal-hydrated-container">
+        <!-- Content gets loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       SITE FOOTER
+       ============================================= -->
+  <footer class="bg-navyDeep text-slate-400 border-t border-slate-800 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-2.5 text-white">
+            <div class="w-8 h-8 rounded-lg bg-sky flex items-center justify-center font-bold text-white text-base">G</div>
+            <span class="font-display font-bold text-lg">Info<span class="text-sky">Care</span></span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Nepal's leading sovereign software systems architect. Empowering modern federal institutions with resilient data structures.
+          </p>
+          <div class="flex space-x-4 text-slate-500">
+            <a href="#" class="hover:text-white" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+            <a href="#" class="hover:text-white" aria-label="Facebook Page"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+            <a href="#" class="hover:text-white" aria-label="Twitter Feed"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: System Products -->
+        <div class="space-y-3">
+          <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">System Catalog</h4>
+          <ul class="text-xs space-y-2">
+            <li><a href="#products" class="hover:text-sky transition-colors">Service Delivery Portal</a></li>
+            <li><a href="#products" class="hover:text-sky transition-colors">CMIS Framework</a></li>
+            <li><a href="#products" class="hover:text-sky transition-colors">AOMS Beruju System</a></li>
+            <li><a href="#products" class="hover:text-sky transition-colors">Krishi Agriculture</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Quick Navigation -->
+        <div class="space-y-3">
+          <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">Core Navigation</h4>
+          <ul class="text-xs space-y-2">
+            <li><a href="#about" class="hover:text-sky transition-colors">About Our Journey</a></li>
+            <li><a href="#case-studies" class="hover:text-sky transition-colors">Case Portfolios</a></li>
+            <li><a href="#resources" class="hover:text-sky transition-colors">Resource Archive</a></li>
+            <li><a href="#contact" class="hover:text-sky transition-colors">Contact Engineering</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Regulatory Status -->
+        <div class="space-y-3">
+          <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">State Alignment</h4>
+          <ul class="text-xs space-y-2">
+            <li><span class="text-emerald-400"><i class="fa-solid fa-shield"></i> PPA Act Compliant</span></li>
+            <li><span class="text-sky"><i class="fa-solid fa-server"></i> Sovereign Local Servers</span></li>
+            <li><span class="text-slate-400">ISO-27001 Data Posture</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <span>&copy; 2026 InfoCare Pvt. Ltd. All rights reserved. Registered under Nepal Corporate Registrars.</span>
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-white">Privacy Architecture</a>
+          <a href="#" class="hover:text-white">Security SLA Specs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       MASTER REACTION CONTROLLER & DATA MANAGER
+       ============================================= -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. DATA DICTIONARY SYSTEM (DYNAMIC STATES)
+    // -------------------------------------------------------------
+    const PROVINCE_DATABASE = [
+      { id: "p1", name: "Koshi Province", deployed: 137, status: "Active Growth", description: "Deployed heavily across infrastructure divisions tracking roads and water schemes using our customized Planning integration framework.", framework: "AOMS V3.2" },
+      { id: "p2", name: "Madhesh Province", deployed: 136, status: "Active Scaling", description: "Focusing heavily on citizen service delivery portals and agriculture profiling tools to track crop grants across southern municipalities.", framework: "Krishi Portal" },
+      { id: "p3", name: "Bagmati Province", deployed: 119, status: "Primary Base", description: "Our primary deployment sector. Tracks state ministries, roads, municipal contract management systems, and academic performance evaluations.", framework: "Sovereign CMIS" },
+      { id: "p4", name: "Gandaki Province", deployed: 85, status: "Optimized Operational", description: "Unifies rural tourism structures and construction lifecycles with strict planning metrics and integrated mapping overlays.", framework: "Yojana Portal" },
+      { id: "p5", name: "Lumbini Province", deployed: 109, status: "Active Audit Compliance", description: "Strong focus on AOMS Beruju audits and procurement lifecycles in alignment with federal standard evaluation procedures.", framework: "AOMS V3.5" },
+      { id: "p6", name: "Karnali Province", deployed: 79, status: "Offline-First Standard", description: "Utilizes mobile-first offline synchronization structures to map municipal development pipelines across low-bandwidth environments.", framework: "Offline Krishi" },
+      { id: "p7", name: "Sudurpashchim Province", deployed: 88, status: "Actively Onboarding", description: "Developing custom community-centric project boards alongside municipal planning and resource utilization algorithms.", framework: "Planning Hub" }
+    ];
+
+    const PRODUCT_DATABASE = [
+      { id: "delivery", title: "Service Delivery Portal", subtitle: "E-governance & citizen services", category: "Citizen Services", icon: "fa-users-gear", excerpt: "A unified digital gateway digitizing municipal administration, appointments, and feedback channels.", desc: "Includes a Digital Citizen Charter, Appointment Management modules, and Notice Circulation. Standardizes administrative pipelines to significantly minimize citizen queues at ward levels." },
+      { id: "cmis", title: "Contract Lifecycle (CMIS)", subtitle: "Infrastructure project lifecycle", category: "Infrastructure", icon: "fa-bridge", excerpt: "Complete construction project pipeline tracking — from DPR formulation and site verification to payment gateways.", desc: "Pioneers the monitoring of Bank Guarantees (APG/PBG), automatically alerting auditors when compliance parameters or deadlines expire." },
+      { id: "pms", title: "Procurement Portal (PMS)", subtitle: "Public sector procurement", category: "Works & Procurement", icon: "fa-gavel", excerpt: "Centralized bidding and evaluation framework designed for DUDBC and housing structures.", desc: "Supports dynamic standing list generation, automated Excel/Word file exports, and bids validation in strict accordance with the Public Procurement Act." },
+      { id: "aoms", title: "Audit Observations (AOMS)", subtitle: "Beruju & compliance tracking", category: "Finance & Audit", icon: "fa-calculator", excerpt: "Digitizes Beruju (audit discrepancies) tracking, lifecycle tracking, and resolution reporting.", desc: "AOMS handles ministerial audit backlogs. Designed for roads departments, it automates Schedule 13, 14, 16, and 17 generation dynamically." },
+      { id: "krishi", title: "Krishi Agriculture Portal", subtitle: "Farmer management & e-commerce", category: "Agriculture", icon: "fa-seedling", excerpt: "Empower local agricultural divisions with crop profiles, farmer ID tracking, and localized e-commerce.", desc: "Maintains centralized farmer datasets, coordinates crop subsidies, and provides field agents with robust mobile logging applications." },
+      { id: "yojana", title: "Yojana Planning System", subtitle: "Project budgeting & GIS tracking", category: "Infrastructure", icon: "fa-map-location-dot", excerpt: "A robust project budgeting and monitoring system utilizing OpenStreetMap coordinates.", desc: "Integrates planning records with structural maps, enabling executive dashboards to instantly verify construction statuses geographically." },
+      { id: "schools", title: "School Performance Audit", subtitle: "ERO-aligned analytics platform", category: "Education", icon: "fa-graduation-cap", excerpt: "ERO-aligned analytics platform that digitizes school auditing and performance parameters.", desc: "Transforms field survey data into interactive performance maps, investment priority reports, and academic insight dashboards for education policymakers." },
+      { id: "data-vis", title: "Data & Visualization Portal", subtitle: "National repository & GIS", category: "Data Intelligence", icon: "fa-chart-pie", excerpt: "A high-capacity national data repository that transforms records into visual map layers.", desc: "Creates standardized GIS map layers, rich infographics, and advanced analytics — with streamlined CSV/Excel templates for seamless data migration." },
+      { id: "ai-bot", title: "AI Support Bot", subtitle: "Multilingual 24/7 assistance", category: "AI / ML", icon: "fa-robot", excerpt: "24/7 multilingual AI assistance in English, Nepali, and Romanized Nepali.", desc: "Knowledge-base driven with hybrid human escalation and geo-location analytics to identify capacity gaps province-by-province." }
+    ];
+
+    const CASE_DATABASE = [
+      { id: "cs-dor", title: "Digitalizing Audit Protocols for Roads Department", client: "Department of Roads", category: "Audit Resolution", metric: "3x Faster Resolution", summary: "Automating Beruju compliance protocols to coordinate regional branch observations.", detail: "By deploying AOMS, the Department of Roads replaced paper trails with active databases. Automatic schedule generation saved audit departments three weeks of preparation cycles per division." },
+      { id: "cs-scale", title: "National Contract Management Rollout", client: "Federal Ministries", category: "Infrastructure", metric: "753 Municipalities Onboarded", summary: "Establishing secure multi-tier contract monitoring standardizing municipal works.", detail: "Unifying various local procurement registers into a single central CMIS database allowed state agencies to monitor sovereign projects valued at billions of NPR." },
+      { id: "cs-education", title: "District Performance Audit Systems", client: "Education Review Office", category: "Academic Analytics", metric: "100% ERO Compliant", summary: "Field survey processing transforming educational datasets into prioritized allocations.", detail: "Developed mobile-first audit tools enabling officials to score academic performance metrics, creating district maps highlighting investment areas." }
+    ];
+
+    const BLOG_DATABASE = [
+      { title: "Understanding PPA Bidding Rules", snippet: "An analytical breakdown of the latest compliance amendments under Nepal's Public Procurement Act.", date: "May 12, 2026" },
+      { title: "The Sovereign Cloud Paradigm", snippet: "Why local municipal and state databases must be strictly retained in secured, high-availability local hosting.", date: "April 28, 2026" },
+      { title: "Minimizing Municipal Backlogs", snippet: "How modern e-governance service delivery engines eliminate ward bottlenecks.", date: "March 15, 2026" }
+    ];
+
+    const FAQ_DATABASE = [
+      { q: "Are your platforms compliant with the Public Procurement Act (PPA)?", a: "Yes. Every single algorithm, validation trigger, and document generator inside our PMS and CMIS suites adheres strictly to public procurement regulations in Nepal." },
+      { q: "Can these applications coordinate without a persistent internet connection?", a: "Absolutely. Our mobile collection suites (like Yojana and Krishi) utilize offline-first database synchronization pipelines. Field agents track progress locally, and data is synced safely once connected." },
+      { q: "How are localized database security regulations managed?", a: "We build secure systems hosted strictly on sovereign local hosting servers, maintaining absolute compliance with local data protection acts." }
+    ];
+
+    // -------------------------------------------------------------
+    // 2. SCROLL REVEAL & SYSTEM INITIALIZATION
+    // -------------------------------------------------------------
+    window.addEventListener("DOMContentLoaded", () => {
+      hydrateSystemViews();
+      initScrollSpy();
+      initScrollReveal();
+      initParticleAnimation();
+    });
+
+    // -------------------------------------------------------------
+    // 3. RUNTIME SYSTEM HYDRATOR
+    // -------------------------------------------------------------
+    let activeProductIndex = 0;
+
+    function hydrateSystemViews() {
+      // A. PROVINCE MAP CONTROLS
+      const provinceCtrlContainer = document.getElementById("province-controls");
+      provinceCtrlContainer.innerHTML = "";
+      PROVINCE_DATABASE.forEach((prov, i) => {
+        const btn = document.createElement("button");
+        btn.className = `w-full text-left px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border transition-all flex items-center justify-between ${i === 2 ? 'bg-white border-slate-200 text-sky shadow-sm' : 'bg-transparent border-transparent text-navy hover:bg-white/60'}`;
+        btn.innerHTML = `
+          <span>${prov.name}</span>
+          <span class="text-[10px] bg-skyLight text-sky font-bold px-2.5 py-1 rounded-full">${prov.deployed} Local Bodies</span>
+        `;
+        btn.addEventListener("click", () => {
+          // Reset sibling buttons
+          provinceCtrlContainer.querySelectorAll("button").forEach(b => {
+            b.className = "w-full text-left px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border transition-all flex items-center justify-between bg-transparent border-transparent text-navy hover:bg-white/60";
+          });
+          btn.className = "w-full text-left px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border transition-all flex items-center justify-between bg-white border-slate-200 text-sky shadow-sm";
+          
+          // Hydrate target detail card
+          document.getElementById("p-card-header").innerText = prov.status;
+          document.getElementById("p-card-deployed").innerText = "Systems Secured";
+          document.getElementById("p-card-title").innerText = prov.name;
+          document.getElementById("p-card-desc").innerText = prov.description;
+          document.getElementById("p-card-count").innerText = prov.deployed;
+          document.getElementById("p-card-framework").innerText = prov.framework;
+        });
+        provinceCtrlContainer.appendChild(btn);
+      });
+
+      // Hydrate default state (Bagmati)
+      const bagmati = PROVINCE_DATABASE[2];
+      document.getElementById("p-card-header").innerText = bagmati.status;
+      document.getElementById("p-card-title").innerText = bagmati.name;
+      document.getElementById("p-card-desc").innerText = bagmati.description;
+      document.getElementById("p-card-count").innerText = bagmati.deployed;
+      document.getElementById("p-card-framework").innerText = bagmati.framework;
+
+      // B. PRODUCTS ACCORDION ENGINE
+      renderProductTabMenu();
+
+      // C. CASE STUDIES FILTERING
+      hydrateCaseStudies("all");
+
+      // D. RESOURCES & COMPLIANCE DATA
+      const blogsGrid = document.getElementById("blogs-container-grid");
+      blogsGrid.innerHTML = "";
+      BLOG_DATABASE.forEach(blog => {
+        const card = document.createElement("div");
+        card.className = "bg-white border border-slate-200/60 rounded-3xl p-6 shadow-premium hover:shadow-md transition-shadow flex flex-col justify-between";
+        card.innerHTML = `
+          <div class="space-y-4">
+            <span class="text-[9px] text-sky font-bold uppercase tracking-widest block">${blog.date}</span>
+            <h3 class="font-display font-bold text-navy text-lg leading-snug">${blog.title}</h3>
+            <p class="text-xs text-smoke leading-relaxed">${blog.snippet}</p>
+          </div>
+          <a href="#resources" class="text-xs font-semibold text-sky hover:underline block pt-4 mt-4 border-t border-slate-100">Access Compliance Document &rarr;</a>
+        `;
+        blogsGrid.appendChild(card);
+      });
+
+      // E. FAQS ACCORDION
+      const faqContainer = document.getElementById("accordion-container");
+      faqContainer.innerHTML = "";
+      FAQ_DATABASE.forEach((faq, i) => {
+        const div = document.createElement("div");
+        div.className = "bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all";
+        div.innerHTML = `
+          <button class="w-full text-left px-6 py-4 font-bold text-sm text-navy hover:text-sky transition-colors flex items-center justify-between">
+            <span>${faq.q}</span>
+            <i class="fa-solid fa-plus text-slate-400 text-xs transition-transform duration-300"></i>
+          </button>
+          <div class="max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
+            <p class="px-6 py-4 text-xs text-smoke leading-relaxed">${faq.a}</p>
+          </div>
+        `;
+        
+        const btn = div.querySelector("button");
+        const body = div.querySelector("div");
+        const icon = div.querySelector("i");
+        btn.addEventListener("click", () => {
+          const isOpen = body.style.maxHeight && body.style.maxHeight !== "0px";
+          faqContainer.querySelectorAll("div").forEach(parent => {
+            const childBody = parent.querySelector("div");
+            const childIcon = parent.querySelector("i");
+            if (childBody) childBody.style.maxHeight = "0px";
+            if (childIcon) childIcon.className = "fa-solid fa-plus text-slate-400 text-xs";
+          });
+
+          if (!isOpen) {
+            body.style.maxHeight = `${body.scrollHeight}px`;
+            icon.className = "fa-solid fa-minus text-sky text-xs rotate-90";
+          }
+        });
+        faqContainer.appendChild(div);
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 4. INTERACTIVE PRODUCTS TABS SYSTEM
+    // -------------------------------------------------------------
+    function renderProductTabMenu() {
+      const parentNav = document.querySelector("#products nav");
+      parentNav.innerHTML = "";
+      
+      PRODUCT_DATABASE.forEach((p, idx) => {
+        const activeItem = idx === activeProductIndex;
+        const item = document.createElement("div");
+        item.className = `products__nav-item flex items-start gap-4 p-4 rounded-2xl cursor-pointer transition-all border shrink-0 lg:w-full ${activeItem ? 'bg-skyLight/70 border-sky/20' : 'bg-transparent border-transparent hover:bg-slate-100'}`;
+        item.innerHTML = `
+          <div class="products__nav-icon w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${activeItem ? 'bg-sky text-white' : 'bg-slate-200/50 text-slate-500'}">
+            <i class="fa-solid ${p.icon}"></i>
+          </div>
+          <div class="text-left">
+            <div class="products__nav-title font-bold text-xs text-navy leading-snug">${p.title}</div>
+            <div class="products__nav-sub text-[10px] text-smoke mt-1">${p.subtitle}</div>
+          </div>
+        `;
+        item.addEventListener("click", () => {
+          activeProductIndex = idx;
+          renderProductTabMenu();
+        });
+        parentNav.appendChild(item);
+      });
+
+      // Hydrate current active panel content
+      const pData = PRODUCT_DATABASE[activeProductIndex];
+      const detailContainer = document.getElementById("product-detail-panel");
+      detailContainer.innerHTML = `
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-skyLight text-sky flex items-center justify-center text-xl"><i class="fa-solid ${pData.icon}"></i></div>
+            <span class="text-xs uppercase tracking-widest font-extrabold text-sky bg-skyLight px-3 py-1 rounded-full">${pData.category}</span>
+          </div>
+          <h3 class="text-2xl font-display font-extrabold text-navy mb-4">${pData.title}</h3>
+          <p class="text-smoke text-sm leading-relaxed mb-8 max-w-2xl">${pData.desc}</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-100 pt-8 mb-8">
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 bg-skyLight text-sky flex items-center justify-center rounded-full text-xs shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
+              <p class="text-xs text-navy font-semibold">100% PPA Legal Conformity</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 bg-skyLight text-sky flex items-center justify-center rounded-full text-xs shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
+              <p class="text-xs text-navy font-semibold">Offline Synchronization Ready</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-4 border-t border-slate-100 pt-6">
+          <button class="w-full sm:w-fit px-6 py-3 bg-sky text-white font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg shadow-sky/20 hover:bg-sky/95 transition-all" onclick="triggerProductModal('${pData.id}')">Request Operational Trial</button>
+          <a href="#contact" class="text-xs font-bold text-navy hover:text-sky transition-colors">Consult Integration Plan &rarr;</a>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------
+    // 5. CASE STUDIES FILTER SYSTEM
+    // -------------------------------------------------------------
+    function hydrateCaseStudies(targetCat) {
+      const filtersContainer = document.getElementById("case-filters");
+      const casesGrid = document.getElementById("cases-catalog-grid");
+      
+      const categories = ["all", "Audit Resolution", "Infrastructure", "Academic Analytics"];
+      filtersContainer.innerHTML = "";
+      categories.forEach(cat => {
+        const btn = document.createElement("button");
+        const isActive = cat === targetCat;
+        btn.className = `px-4 py-2 rounded-xl text-xs font-bold transition-all ${isActive ? 'bg-sky text-white shadow-md shadow-sky/20' : 'bg-slate-100 hover:bg-slate-200 text-navy'}`;
+        btn.innerText = cat === "all" ? "All Deployments" : cat;
+        btn.addEventListener("click", () => hydrateCaseStudies(cat));
+        filtersContainer.appendChild(btn);
+      });
+
+      casesGrid.innerHTML = "";
+      const filtered = targetCat === "all" ? CASE_DATABASE : CASE_DATABASE.filter(c => c.category === targetCat);
+      filtered.forEach(cs => {
+        const card = document.createElement("div");
+        card.className = "group bg-white border border-slate-200/80 rounded-3xl p-6 flex flex-col justify-between hover:shadow-premium transition-all duration-300" ;
+        card.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] text-sky font-extrabold uppercase tracking-widest">${cs.category}</span>
+              <span class="px-2.5 py-1 bg-slate-50 border border-slate-150 text-[10px] font-bold text-navy rounded-lg">${cs.client}</span>
+            </div>
+            <h3 class="font-display font-extrabold text-navy text-xl group-hover:text-sky transition-colors leading-snug">${cs.title}</h3>
+            <p class="text-xs text-smoke leading-relaxed">${cs.summary}</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] uppercase tracking-wider text-smoke block font-semibold">Production Impact Metric</span>
+              <span class="text-sm font-display font-extrabold text-navy mt-0.5">${cs.metric}</span>
+            </div>
+            <button class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-navy hover:text-white transition-colors" onclick="triggerCaseModal('${cs.id}')">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        `;
+        casesGrid.appendChild(card);
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 6. SCROLL SPY ENGINE & DIRECTORY HIGHLIGHTER
+    // -------------------------------------------------------------
+    function initScrollSpy() {
+      const header = document.getElementById("main-header");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("main > section");
+
+      window.addEventListener("scroll", () => {
+        // Sticky Header styling on scroll
+        if (window.scrollY > 40) {
+          header.classList.add("bg-white/95", "shadow-sm", "py-3");
+          header.classList.remove("py-4");
+        } else {
+          header.classList.remove("bg-white/95", "shadow-sm", "py-3");
+          header.classList.add("py-4");
+        }
+
+        // Active Section tracking
+        let currentSectionId = "";
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            currentSectionId = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove("text-sky", "bg-skyLight");
+          if (link.getAttribute("href") === `#${currentSectionId}`) {
+            link.classList.add("text-sky", "bg-skyLight");
+          }
+        });
+      }, { passive: true });
+    }
+
+    // -------------------------------------------------------------
+    // 7. COMPLIANCE PPA CALCULATOR ALGORITHM
+    // -------------------------------------------------------------
+    const calcTrigger = document.getElementById("calc-trigger");
+    calcTrigger.addEventListener("click", () => {
+      const scope = document.getElementById("calc-scope").value;
+      const budget = parseFloat(document.getElementById("calc-budget").value) || 0;
+      
+      let openDays = 15;
+      let evalDays = 10;
+      let loiDays = 7;
+
+      if (scope === "works") {
+        if (budget > 20000000) {
+          openDays = 30;
+          evalDays = 15;
+        } else {
+          openDays = 15;
+          evalDays = 7;
+        }
+      } else if (scope === "goods") {
+        if (budget > 10000000) {
+          openDays = 30;
+          evalDays = 15;
+        } else {
+          openDays = 15;
+          evalDays = 7;
+        }
+      } else if (scope === "consult") {
+        openDays = 30;
+        evalDays = 30;
+        loiDays = 15;
+      }
+
+      document.getElementById("calc-res-open").innerText = `${openDays} Days`;
+      document.getElementById("calc-res-open").classList.add("text-sky", "scale-105");
+      document.getElementById("calc-res-eval").innerText = `${evalDays} Days`;
+      document.getElementById("calc-res-eval").classList.add("text-sky", "scale-105");
+      document.getElementById("calc-res-loi").innerText = `${loiDays} Days`;
+      document.getElementById("calc-res-loi").classList.add("text-sky", "scale-105");
+
+      setTimeout(() => {
+        document.getElementById("calc-res-open").classList.remove("text-sky", "scale-105");
+        document.getElementById("calc-res-eval").classList.remove("text-sky", "scale-105");
+        document.getElementById("calc-res-loi").classList.remove("text-sky", "scale-105");
+      }, 500);
+    });
+
+    // -------------------------------------------------------------
+    // 8. REAL-TIME MULTILINGUAL SUPPORT BOT
+    // -------------------------------------------------------------
+    const chatLauncher = document.getElementById("ai-chat-launcher");
+    const chatBox = document.getElementById("ai-chat-box");
+    const chatClose = document.getElementById("ai-chat-close");
+    const chatSend = document.getElementById("chat-send-trigger");
+    const chatInput = document.getElementById("chat-input-val");
+    const chatStream = document.getElementById("chat-stream-messages");
+
+    chatLauncher.addEventListener("click", () => {
+      chatBox.classList.toggle("hidden");
+    });
+    chatClose.addEventListener("click", () => {
+      chatBox.classList.add("hidden");
+    });
+    chatSend.addEventListener("click", executeChatMessage);
+    chatInput.addEventListener("keypress", (e) => {
+      if (e.key === 'Enter') executeChatMessage();
+    });
+
+    document.querySelectorAll(".chat-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        chatInput.value = chip.innerText;
+        executeChatMessage();
+      });
+    });
+
+    function executeChatMessage() {
+      const val = chatInput.value.trim();
+      if (!val) return;
+
+      const userBubble = document.createElement("div");
+      userBubble.className = "flex items-start space-x-2 justify-end";
+      userBubble.innerHTML = `<div class="bg-sky text-white p-2.5 rounded-2xl text-xs max-w-[80%] leading-relaxed">${val}</div>`;
+      chatStream.appendChild(userBubble);
+      chatInput.value = "";
+      chatStream.scrollTop = chatStream.scrollHeight;
+
+      setTimeout(() => {
+        let reply = "I apologize, but I did not understand that command. Please specify: 'Beruju', 'CMIS', 'Krishi', or 'Yojana'.";
+        const queryLower = val.toLowerCase();
+
+        if (queryLower.includes("beruju") || queryLower.includes("aoms")) {
+          reply = "The AOMS (Audit Observations Management System) digitizes audit discrepancy records. Automates Schedules 13, 14, and 16, directly routing resolution files across ministries.";
+        } else if (queryLower.includes("cmis")) {
+          reply = "The Contract Management system tracks local level construction projects, verifying Bank Guarantees (APG/PBG) and logging physical progress metrics.";
+        } else if (queryLower.includes("krishi") || queryLower.includes("agri")) {
+          reply = "Our Krishi Agriculture Portal structures household farmer mapping, generates Farmer Cards, and enables digital grant management across local levels.";
+        } else if (queryLower.includes("yojana") || queryLower.includes("planning")) {
+          reply = "Yojana tracks capital project allocation parameters, linking financial budgets to OpenStreetMap coordinates.";
+        }
+
+        const botBubble = document.createElement("div");
+        botBubble.className = "flex items-start space-x-2";
+        botBubble.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-navy shrink-0 text-[10px] font-bold">AI</div>
+          <div class="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl text-slate-700 max-w-[80%] leading-relaxed">${reply}</div>
+        `;
+        chatStream.appendChild(botBubble);
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 500);
+    }
+
+    // -------------------------------------------------------------
+    // 9. SYSTEM POPUP MODALS
+    // -------------------------------------------------------------
+    const masterModal = document.getElementById("master-system-modal");
+    const modalClose = document.getElementById("modal-close-trigger");
+    const modalBody = document.getElementById("modal-hydrated-container");
+
+    modalClose.addEventListener("click", () => masterModal.classList.add("hidden"));
+
+    function triggerProductModal(id) {
+      const prod = PRODUCT_DATABASE.find(p => p.id === id);
+      if (!prod) return;
+
+      modalBody.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3 text-sky">
+            <span class="w-12 h-12 rounded-xl bg-skyLight flex items-center justify-center text-xl"><i class="fa-solid ${prod.icon}"></i></span>
+            <div>
+              <span class="text-[10px] uppercase tracking-wider font-extrabold text-smoke">${prod.category} Specification</span>
+              <h2 class="font-display font-extrabold text-navy text-2xl">${prod.title}</h2>
+            </div>
+          </div>
+          <p class="text-sm text-smoke leading-relaxed">${prod.desc}</p>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+            <h4 class="font-bold text-xs text-navy uppercase tracking-wider">National Compliance Standards</h4>
+            <ul class="text-xs text-smoke space-y-1">
+              <li>• Public Procurement Act (PPA) Compliant validation loops</li>
+              <li>• Local sovereign data center host configurations ready</li>
+              <li>• Advanced RESTful APIs for cross-department synchronization</li>
+            </ul>
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button class="px-5 py-2.5 rounded-xl border border-slate-200 text-navy font-bold text-xs" onclick="closeModal()">Close</button>
+            <a href="#contact" class="px-5 py-2.5 rounded-xl bg-sky text-white font-bold text-xs hover:bg-sky/90 transition-all text-center" onclick="closeModal()">Schedule Trial Deployment</a>
+          </div>
+        </div>
+      `;
+      masterModal.classList.remove("hidden");
+    }
+
+    function triggerCaseModal(id) {
+      const cs = CASE_DATABASE.find(c => c.id === id);
+      if (!cs) return;
+
+      modalBody.innerHTML = `
+        <div class="space-y-4">
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase tracking-widest font-extrabold text-sky">${cs.category} Analysis</span>
+            <h2 class="font-display font-extrabold text-navy text-2xl">${cs.title}</h2>
+            <span class="inline-block px-3 py-1 bg-skyLight text-sky text-xs font-bold rounded-lg">${cs.client}</span>
+          </div>
+          <p class="text-sm text-smoke leading-relaxed">${cs.detail}</p>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-smoke block uppercase font-bold tracking-wider">Impact Outcome</span>
+              <span class="text-xl font-display font-extrabold text-navy">${cs.metric}</span>
+            </div>
+            <span class="text-emerald-500 font-bold text-xs"><i class="fa-solid fa-circle-check"></i> Audit Certified</span>
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button class="px-5 py-2.5 rounded-xl border border-slate-200 text-navy font-bold text-xs" onclick="closeModal()">Close</button>
+            <a href="#contact" class="px-5 py-2.5 rounded-xl bg-sky text-white font-bold text-xs hover:bg-sky/90 transition-all text-center" onclick="closeModal()">Inquire Integration Plan</a>
+          </div>
+        </div>
+      `;
+      masterModal.classList.remove("hidden");
+    }
+
+    function closeModal() {
+      masterModal.classList.add("hidden");
+    }
+
+    // -------------------------------------------------------------
+    // 10. SCROLL REVEAL UTILITY
+    // -------------------------------------------------------------
+    function initScrollReveal() {
+      const reveals = document.querySelectorAll("[data-reveal]");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    // -------------------------------------------------------------
+    // 11. MOBILE DRAWER TRIGGER
+    // -------------------------------------------------------------
+    const mobileTrigger = document.getElementById("mobile-menu-trigger");
+    const mobileDropdown = document.getElementById("mobile-dropdown-menu");
+    mobileTrigger.addEventListener("click", () => {
+      mobileDropdown.classList.toggle("hidden");
+    });
+    mobileDropdown.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileDropdown.classList.add("hidden");
+      });
+    });
+
+    // -------------------------------------------------------------
+    // 12. FLOATING BACKGROUND NETWORK SIMULATOR (CANVAS)
+    // -------------------------------------------------------------
+    const pCanvas = document.getElementById("flow-particle-canvas");
+    const pCtx = pCanvas.getContext("2d");
+    let particleArray = [];
+    const maxParticles = 40;
+
+    window.addEventListener("resize", () => {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * pCanvas.width;
+        this.y = Math.random() * pCanvas.height;
+        this.vx = (Math.random() - 0.5) * 0.25;
+        this.vy = (Math.random() - 0.5) * 0.25;
+        this.radius = Math.random() * 2 + 1;
+      }
+      draw() {
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        pCtx.fillStyle = "#24A9DF";
+        pCtx.fill();
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > pCanvas.width) this.vx = -this.vx;
+        if (this.y < 0 || this.y > pCanvas.height) this.vy = -this.vy;
+      }
+    }
+
+    function initParticleAnimation() {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
+      for (let i = 0; i < maxParticles; i++) {
+        particleArray.push(new Particle());
+      }
+      animateParticles();
+    }
+
+    function animateParticles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      particleArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // Interactive link lines
+      for (let i = 0; i < particleArray.length; i++) {
+        for (let j = i + 1; j < particleArray.length; j++) {
+          const dx = particleArray[i].x - particleArray[j].x;
+          const dy = particleArray[i].y - particleArray[j].y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < 120) {
+            pCtx.beginPath();
+            pCtx.moveTo(particleArray[i].x, particleArray[i].y);
+            pCtx.lineTo(particleArray[j].x, particleArray[j].y);
+            pCtx.strokeStyle = `rgba(36, 169, 223, ${0.15 - dist / 120 * 0.15})`;
+            pCtx.lineWidth = 0.5;
+            pCtx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    // -------------------------------------------------------------
+    // 13. FORM CONTROLLER
+    // -------------------------------------------------------------
+    document.getElementById("contact-gate-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("contact-gate-form").classList.add("hidden");
+      document.getElementById("form-success-alert").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
